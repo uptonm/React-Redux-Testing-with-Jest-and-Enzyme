@@ -5,6 +5,7 @@ import App from 'components/App'
 import CommentBox from 'components/CommentBox'
 import CommentList from 'components/CommentList'
 
+/* SETUP */
 let wrapped // Render a fake component (without children) for testing
 beforeEach(() => {
   wrapped = shallow(<App />)

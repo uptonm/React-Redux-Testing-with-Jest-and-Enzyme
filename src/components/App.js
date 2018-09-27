@@ -4,7 +4,7 @@ import CommentList from 'components/CommentList'
 
 export default () => {
     return(
-        <div>
+        <div className='container text-center'>
             <CommentBox />
             <CommentList />
         </div>
