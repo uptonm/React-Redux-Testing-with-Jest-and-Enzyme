@@ -1,20 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from '../App'
-/* uses JSDOM to fool React into thinking it's rendering in the browser */
-it('shows a comment box', () => {
-  const div = document.createElement('div')
-  // This 'fake' div will contain the HTML produced by the App component
-  ReactDOM.render(<App />, div)
-  expect(div.innerHTML).toContain('Comment Box')
-  /* Responsible for cleanup. Destroys leftover objects to improve performance of test suite */
-  ReactDOM.unmountComponentAtNode(div)
+import { shallow } from 'enzyme'
+import App from 'components/App'
+import CommentBox from 'components/CommentBox'
+import CommentList from 'components/CommentList'
+
+let wrapped // Render a fake component (without children) for testing
+beforeEach(() => {
+  wrapped = shallow(<App />)
 })
+
+// Check if it contains a comment box
+it('shows a comment box', () => {
+  expect(wrapped.find(CommentBox).length).toEqual(1)
+})
+
+// Check if it contains a comment list
 it('shows a comment list', () => {
-    const div = document.createElement('div');
-    // This 'fake' div will contain the HTML produced by the App component
-    ReactDOM.render(<App />, div);
-    expect(div.innerHTML).toContain('Comment List');
-    /* Responsible for cleanup. Destroys leftover objects to improve performance of test suite */
-    ReactDOM.unmountComponentAtNode(div);
-  });
+  expect(wrapped.find(CommentList).length).toEqual(1)
+})
+
