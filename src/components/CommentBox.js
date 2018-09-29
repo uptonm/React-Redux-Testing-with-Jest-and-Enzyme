@@ -16,7 +16,7 @@ class CommentBox extends Component {
 
         // TODO: Call an action creator and save the comment
         this.props.saveComment(this.state.comment)
-        
+
         this.setState({ comment: '' })
     }
 

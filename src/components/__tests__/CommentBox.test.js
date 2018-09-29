@@ -13,7 +13,6 @@ beforeEach(() => {
         </Root>
     )
 })
-
 /* CLEANUP */
 afterEach(() => {
     wrapped.unmount() // Unmount DOM render to avoid possible conflicts with JSDOM testing
