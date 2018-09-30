@@ -10,16 +10,12 @@ class App extends Component {
     renderButton() {
         if(this.props.auth) {
             return (
-                <a onClick={() => this.props.changeAuth(false)}>
-                Sign Out
-                </a>
+                <Link className='nav-link' to='/' onClick={() => this.props.changeAuth(false)}>Sign Out</Link>
             )
         }
         else {
             return (
-                <a onClick={() => this.props.changeAuth(true)}>
-                    Sign In
-                </a>
+                <Link className='nav-link' to='/' onClick={() => this.props.changeAuth(true)}>Sign In</Link>
             )
         }
     }
@@ -34,7 +30,7 @@ class App extends Component {
                     <Link className='nav-link' to='/post'>Posts</Link>
                 </li>
                 <li className='nav-item right'>
-                    <Link className='nav-link' to='/'>{this.renderButton()}</Link>
+                    {this.renderButton()}
                 </li>
             </ul>
         )

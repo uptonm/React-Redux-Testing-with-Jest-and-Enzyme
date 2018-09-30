@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from 'actions'
+import requireAuth from 'components/requireAuth'
 
 class CommentBox extends Component {
-    state = {
-        comment: ''
-    }
+    state = { comment: '' }
 
     handleChange = (event) => {
         this.setState({ comment: event.target.value })
@@ -13,8 +12,7 @@ class CommentBox extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault() // Keeps page from attempting to reload on submit
-
-        // TODO: Call an action creator and save the comment
+        
         this.props.saveComment(this.state.comment)
 
         this.setState({ comment: '' })
@@ -37,7 +35,5 @@ class CommentBox extends Component {
         )
     }
 }
-function mapStateToProps(state) {
-    return { auth: state.auth }
-}
-export default connect(mapStateToProps, actions)(CommentBox)
+
+export default connect(null, actions)(requireAuth(CommentBox))
