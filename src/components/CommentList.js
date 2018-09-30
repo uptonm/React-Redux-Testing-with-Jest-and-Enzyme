@@ -11,6 +11,7 @@ class CommentList extends Component {
     render() {
         return (
             <div className='container' style={{marginTop: '10px'}}>
+                <h4 className='display-4'>Comment List</h4>
                 <ul className='list-group'>
                     {this.renderComments()}
                 </ul>

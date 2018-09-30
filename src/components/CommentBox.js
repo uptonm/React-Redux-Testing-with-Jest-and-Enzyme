@@ -22,10 +22,10 @@ class CommentBox extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{marginTop: '10px'}}>
                 <form onSubmit={this.handleSubmit}>
                     <h4 className='display-4 text-center'>Add a Comment</h4>
-                    <textarea className='form-control' onChange={this.handleChange} value={this.state.comment}></textarea>
+                    <textarea className='form-control' onChange={this.handleChange} value={this.state.comment} rows='5'></textarea>
                     <div style={{marginTop: '10px'}}>
                         <button className='btn btn-lg btn-success'>Submit Comment</button>
                     </div>
@@ -37,5 +37,7 @@ class CommentBox extends Component {
         )
     }
 }
-
-export default connect(null, actions)(CommentBox)
+function mapStateToProps(state) {
+    return { auth: state.auth }
+}
+export default connect(mapStateToProps, actions)(CommentBox)
