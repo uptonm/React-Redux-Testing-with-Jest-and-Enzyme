@@ -27,3 +27,9 @@ exports.signup = async (req, res) => {
   // Return a status that the user was created
   return res.status(200).send({ token: token(user) });
 };
+
+exports.signin = async (req, res) => {
+  // User has already had email and password authenticated
+  // Give them a token
+  res.send({ token: token(req.user) });
+};
