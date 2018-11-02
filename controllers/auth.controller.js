@@ -1,5 +1,11 @@
 const mongoose = require("mongoose");
+const jwt = require("jwt-simple");
 const User = mongoose.model("users");
+
+const token = user => {
+  const timestamp = new Date().getTime();
+  return jwt.encode({ sub: user.id, iat: timestamp }, process.env.TOKENSECRET);
+};
 
 exports.signup = async (req, res) => {
   if (!req.body.email || !req.body.password) {
@@ -19,5 +25,5 @@ exports.signup = async (req, res) => {
     password: req.body.password
   }).save();
   // Return a status that the user was created
-  return res.status(200).send({ success: true });
+  return res.status(200).send({ token: token(user) });
 };
