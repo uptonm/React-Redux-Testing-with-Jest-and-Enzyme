@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/uptonm/React-Redux-Testing-with-Jest-and-Enzyme#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "dotenv": "^6.1.0",
