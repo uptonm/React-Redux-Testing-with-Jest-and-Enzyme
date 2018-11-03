@@ -3,30 +3,25 @@ import { connect } from "react-redux";
 
 export default ChildComponent => {
   class ComposedComponent extends Component {
-    // Component just rendered
+    // Our component just got rendered
     componentDidMount() {
       this.shouldNavigateAway();
     }
-
-    // Component just got updated
+    // Our component just got updated
     componentDidUpdate() {
       this.shouldNavigateAway();
     }
-
     shouldNavigateAway() {
       if (!this.props.auth) {
         this.props.history.push("/");
       }
     }
-
     render() {
-      return <ChildComponent {...this.props} />; // Passes props to child component, in this case, the action creators to save comments
+      return <ChildComponent {...this.props} />;
     }
   }
-
   function mapStateToProps(state) {
-    return { auth: state.auth };
+    return { auth: state.auth.authenticated };
   }
-
   return connect(mapStateToProps)(ComposedComponent);
 };

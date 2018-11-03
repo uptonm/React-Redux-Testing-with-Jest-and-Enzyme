@@ -1,24 +1,39 @@
 import axios from "axios";
-import { SAVE_COMMENT, FETCH_COMMENTS, CHANGE_AUTH } from "actions/types";
+import { AUTH_USER, AUTH_ERR } from "./types";
 
-export function saveComment(comment) {
-  return {
-    type: SAVE_COMMENT,
-    payload: comment
-  };
-}
+// formProps contains email/password for user
+export const signup = (formProps, callback) => async dispatch => {
+  try {
+    const response = await axios.post(
+      "http://localhost:8000/sign-up",
+      formProps
+    );
+    dispatch({ type: AUTH_USER, payload: response.data.token });
+    localStorage.setItem("token", response.data.token);
+    callback();
+  } catch (e) {
+    dispatch({ type: AUTH_ERR, payload: "Email In Use" });
+  }
+};
 
-export function fetchComments() {
-  const response = axios.get("https://jsonplaceholder.typicode.com/comments");
-  return {
-    type: FETCH_COMMENTS,
-    payload: response
-  };
-}
+export const signin = (formProps, callback) => async dispatch => {
+  try {
+    const response = await axios.post(
+      "http://localhost:8000/sign-in",
+      formProps
+    );
+    dispatch({ type: AUTH_USER, payload: response.data.token });
+    localStorage.setItem("token", response.data.token);
+    callback();
+  } catch (e) {
+    dispatch({ type: AUTH_ERR, payload: "Invalid Login Credentials" });
+  }
+};
 
-export function changeAuth(isLoggedIn) {
+export const signout = () => {
+  localStorage.removeItem("token");
   return {
-    type: CHANGE_AUTH,
-    payload: isLoggedIn
+    type: AUTH_USER,
+    payload: ""
   };
-}
+};
