@@ -4,6 +4,32 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 
+const emailField = ({ input, meta, type, placeholder, min, max }) => {
+  return (
+    <input
+      type="email"
+      className="form-control"
+      id="emailField"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+      value={input.value}
+      onChange={input.onChange}
+    />
+  );
+};
+const passwordField = ({ input, meta, type, placeholder, min, max }) => {
+  return (
+    <input
+      type="password"
+      className="form-control"
+      id="passwordField"
+      aria-describedby="passwordHelp"
+      placeholder="Enter password"
+      value={input.value}
+      onChange={input.onChange}
+    />
+  );
+};
 class Signin extends Component {
   onSubmit = formProps => {
     this.props.signin(formProps, () => {
@@ -13,15 +39,15 @@ class Signin extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.onSubmit)}>
-        <fieldset>
-          <label htmlFor="">Email</label>
-          <Field name="email" type="text" component="input" />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="">Password</label>
-          <Field name="password" type="password" component="input" />
-        </fieldset>
+      <form className="container" onSubmit={handleSubmit(this.onSubmit)}>
+        <div className="form-group">
+          <label htmlFor="exampleInputEmail1">Email address</label>
+          <Field name="email" type="text" component={emailField} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="exampleInputEmail1">Password</label>
+          <Field name="password" type="password" component={passwordField} />
+        </div>
         <div>{this.props.errorMessage}</div>
         <button className="btn btn-lg btn-success">Login</button>
       </form>
