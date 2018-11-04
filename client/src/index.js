@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import reducers from "./reducers";
 import App from "./components/App";
@@ -30,7 +31,7 @@ ReactDOM.render(
         <Route path="/sign-up" component={Signup} />
         <Route path="/sign-out" component={Signout} />
         <Route path="/sign-in" component={Signin} />
-        <Route path="/feature" component={Feature} />
+        <Route path="/profile" component={Feature} />
       </App>
     </BrowserRouter>
   </Provider>,

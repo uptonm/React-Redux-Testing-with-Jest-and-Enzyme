@@ -13,7 +13,7 @@ class Header extends Component {
             }`}
           >
             <Link to="/sign-out" className="nav-link">
-              Sign-Out
+              <i className="fas fa-sign-out-alt" />
             </Link>
           </li>
           <li
@@ -21,8 +21,8 @@ class Header extends Component {
               this.props.location.pathname === "/feature" ? "active" : ""
             }`}
           >
-            <Link to="/feature" className="nav-link">
-              Hidden Feature
+            <Link to="/profile" className="nav-link">
+              <i className="fas fa-user-circle" />
             </Link>
           </li>
         </ul>
@@ -36,7 +36,7 @@ class Header extends Component {
             }`}
           >
             <Link to="/sign-in" className="nav-link">
-              Sign-In
+              <i className="fas fa-sign-in-alt" />
             </Link>
           </li>
           <li
@@ -45,7 +45,7 @@ class Header extends Component {
             }`}
           >
             <Link to="/sign-up" className="nav-link">
-              Sign-Up
+              <i className="fas fa-user-plus" />
             </Link>
           </li>
         </ul>
