@@ -40,6 +40,8 @@ class Signup extends Component {
     const { handleSubmit } = this.props;
     return (
       <form className="container" onSubmit={handleSubmit(this.onSubmit)}>
+        <h1 className="display-4">Sign-Up</h1>
+        <hr />
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email address</label>
           <Field name="email" type="text" component={emailField} />
@@ -49,7 +51,16 @@ class Signup extends Component {
           <Field name="password" type="password" component={passwordField} />
         </div>
         <div>{this.props.errorMessage}</div>
-        <button className="btn btn-lg btn-success">Login</button>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Tooltip on top"
+        >
+          Tooltip on top
+        </button>
+        {/* <button className="btn btn-lg btn-success">Login</button> */}
       </form>
     );
   }

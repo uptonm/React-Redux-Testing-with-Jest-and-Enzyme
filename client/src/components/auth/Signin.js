@@ -40,6 +40,8 @@ class Signin extends Component {
     const { handleSubmit } = this.props;
     return (
       <form className="container" onSubmit={handleSubmit(this.onSubmit)}>
+        <h1 className="display-4">Sign-In</h1>
+        <hr />
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email address</label>
           <Field name="email" type="text" component={emailField} />
